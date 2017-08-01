@@ -4,6 +4,7 @@ version = "0.1.0"
 authors = ["Daniel Murphy <danwright91@gmail.com>"]
 
 [dependencies]
+data-encoding = "2.0.0-rc.1"
 
 [lib]
 name = "cryptopals_lib"
