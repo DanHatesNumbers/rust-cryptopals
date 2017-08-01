@@ -9,13 +9,20 @@ pub fn solution() {
     let input_bytes = HEXLOWER.decode(input).unwrap();
     let key_bytes = HEXLOWER.decode(key).unwrap();
 
-    let xored: Vec<u8> = input_bytes.into_iter()
-        .zip(key_bytes.into_iter())
-        .map(|(input_byte, key_byte)| input_byte ^ key_byte)
-        .collect();
+    let xored = fixed_length_xor(input_bytes, key_bytes).unwrap();
 
     let actual_output = HEXLOWER.encode(&xored);
 
     assert_eq!(expected_output, actual_output);
     println!("Challenge 2 complete!");
+}
+
+fn fixed_length_xor(input_bytes: Vec<u8>, key_bytes: Vec<u8>) -> Result<Vec<u8>, &'static str> {
+    if input_bytes.len() != key_bytes.len() {
+        return Err("Input bytes length and key bytes length do not match")
+    }
+    Ok(input_bytes.into_iter()
+        .zip(key_bytes.into_iter())
+        .map(|(input_byte, key_byte)| input_byte ^ key_byte)
+        .collect())
 }
