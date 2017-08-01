@@ -8,4 +8,5 @@ pub fn solution() {
     let actual_output = BASE64.encode(&HEXLOWER.decode(input).unwrap());
 
     assert_eq!(expected_output, actual_output);
+    println!("Challenge 1 complete!");
 }
