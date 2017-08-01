@@ -9,7 +9,10 @@ pub fn solution() {
     let input_bytes = HEXLOWER.decode(input).unwrap();
     let key_bytes = HEXLOWER.decode(key).unwrap();
 
-    let xored: Vec<u8> = input_bytes.into_iter().zip(key_bytes.into_iter()).map(|(input_byte, key_byte)| input_byte ^ key_byte).collect();
+    let xored: Vec<u8> = input_bytes.into_iter()
+        .zip(key_bytes.into_iter())
+        .map(|(input_byte, key_byte)| input_byte ^ key_byte)
+        .collect();
 
     let actual_output = HEXLOWER.encode(&xored);
 
