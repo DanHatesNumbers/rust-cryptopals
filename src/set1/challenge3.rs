@@ -8,10 +8,8 @@ pub fn solution() {
     let candidate_keys: Vec<Vec<u8>> = (0..26).map(|x| vec![x + 'a' as u8]).collect::<Vec<Vec<_>>>();
 
     let candidate_solutions = candidate_keys.iter()
-        .map(|x| repeating_key_xor(input_bytes.iter(), x.iter()))
+        .map(|x| String::from_utf8(repeating_key_xor(input_bytes.iter(), x.iter())))
         .collect::<Vec<_>>();
-
-    println!("{:?}", HEXLOWER.encode(&candidate_solutions[1]));
 }
 
 fn repeating_key_xor<'a, 'b, T, U>(input_bytes: T, key_bytes: U) -> Vec<u8> 
