@@ -8,7 +8,7 @@ pub fn solution() {
     let input = b"1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736";
     let input_bytes: Vec<u8> = HEXLOWER.decode(input).unwrap();
 
-    let candidate_keys: Vec<Vec<u8>> = (0..26).map(|x| vec![x + 'a' as u8]).collect::<Vec<Vec<_>>>();
+    let candidate_keys: Vec<Vec<u8>> = (32..126).map(|x| vec![x as u8]).collect::<Vec<Vec<_>>>();
 
     let candidate_solution = candidate_keys.iter()
         .map(|x| {
@@ -65,7 +65,8 @@ fn plaintext_scoring(plaintext: &AsciiStr) -> isize {
                 AsciiChar::j => 3,
                 AsciiChar::q => 2,
                 AsciiChar::z => 1,
-                _ => 0
+                AsciiChar::Space => 1,
+                _ => -1
             }
         })
     .sum()
