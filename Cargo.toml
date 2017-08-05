@@ -6,6 +6,8 @@ authors = ["Daniel Murphy <danwright91@gmail.com>"]
 [dependencies]
 ascii = "0.8.6"
 data-encoding = "2.0.0-rc.1"
+hamming = "0.1"
+itertools = "0.6.1"
 
 [lib]
 name = "cryptopals_lib"
